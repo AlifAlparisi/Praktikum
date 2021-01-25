@@ -22,10 +22,10 @@ class DosenFactory extends Factory
     public function definition()
     {
         return [
-           'nip' => $this->faker->numberBetween(1231111, 1239999),
-           'nama' => $this->faker->name,
-           'noHp' => $this->faker->numberBetween(1234567, 7654321),
-           'alamat' => $this->faker->address, 
+            'matkul_id' => $this->faker->randomELement(['1','2','3']), 
+            'nip' => $this->faker->numberBetween(1231111, 1239999),
+            'nama' => $this->faker->name, 
+            'alamat' => $this->faker->address,
         ];
     }
 }

@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Homepage web Mahasiswa') }}</div>
+                <div class="card-header">{{ __('Homepage Web UAS') }}</div>
 
                 <div class="card-body">
-                    Hallo
+                    فَبِأَيِّ آلاءِ رَبِّكُما تُكَذِّبانِ 
                 </div>
             </div>
         </div>

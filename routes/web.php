@@ -20,17 +20,13 @@ Route::get('/', function () {
 Route::get('/index', function () {
     return view('adminLayout/index');
 });
-Route::get('/master', function () {
-    return view('master');
-});
-Route::get('/detail', [HomeController::class, 'detail'])->name('detail');
-
-Route::get('/list', [HomeController::class, 'list'])->name('list');
-
-
 Route::get('/dosen', [HomeController::class, 'dosen'])->name('dosen');
-
-
+Route::get('/createdosen', [HomeController::class, 'create']);
+Route::post('/store', [HomeController::class, 'store']);
+Route::delete('/list/delete{mahasiswa:slug}', [HomeController::class, 'delete']);
+Route::patch('list/update/{mahasiswa:slug}', [HomeController::class, 'update']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+

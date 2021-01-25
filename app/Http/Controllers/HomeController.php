@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Mahasiswa;
+
+use App\Models\Matkul;
+use Illuminate\Support\Str;
 use App\Models\Dosen;
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
+
 
 class HomeController extends Controller
 {
@@ -24,22 +28,28 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
-    }
-    public function detail()
-    {
-        return view('detail');
-    }
-    public function list()   
-    {
-        $mahasiswa = Mahasiswa::all();
-        // dd($mahasiswa);
-        return view('list', compact('mahasiswa'));
+        return view('home');
     }
     public function dosen()
-    {
-        $dosen = Dosen::all();
+    { 
+        $dosen = Dosen::paginate(5); 
         // dd($dosen);
-        return view('dosen', compact('dosen'));
+        return view('dosen', compact('dosen')); 
+    }
+    public function create()
+    {
+        $mtkl = Matkul::all();
+        return view('createdosen', compact('mtkl'));
+    }
+    public function store(Request $request)
+    {
+        $post = new Dosen;
+        $post->matkul_id = $request->matkul_id;
+        $post->nip = $request->nip;
+        $post->nama = $request->nama;
+        $post->alamat = $request->alamat; 
+
+        $post->save();
+        return redirect('dosen');
     }
 }

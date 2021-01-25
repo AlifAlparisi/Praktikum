@@ -1,5 +1,9 @@
 @extends('adminLayout/index')
 @section('content')
+<div class="container">
+
+  <div class="row">
+  </div>
 tabel mahasiswa
 <table class="table">
     <thead>
@@ -10,6 +14,7 @@ tabel mahasiswa
         <th scope="col">class</th>
         <th scope="col">organization</th>
         <th scope="col">address</th>
+        <th>action</th>
 
       </tr>
     </thead>
@@ -21,11 +26,25 @@ tabel mahasiswa
         <td>{{$item->npm}}</td>
         <td>{{$item->name}}</td>
         <td>{{$item->class}}</td>
-        <td>{{$item->organization}}</td>
+        <td>{{$item->organization->name}}</td>
         <td>{{$item->alamat}}</td>
+        <td><a href="/list/detaill/{{$item->slug}}" class="btn btn-primary btn-sm">edit</a></td>
+        <td><form action="/list/delete/{{$item->slug}}" method="POST">
+        @method('delete')
+        @csrf
+          <button type="submit" class="btn btn-danger btn sm">delete</button>
+        </form></td>
       </tr>
 
       @endforeach
     </tbody>
   </table>
+</div>
+<div class="row">
+  <a href="/createmhs" class="btn btn-success btn-sm"> create </a>
+</div>
+</div> 
+<div class="row">
+  {{$mahasiswa->links('adminLayout.pagination')}}
+  </div>
 @endsection

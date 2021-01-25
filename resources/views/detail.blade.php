@@ -1,4 +1,4 @@
 @extends('adminLayout/index')
 @section('content')
-    Ini halaman detail
+Ini Halaman Detail
 @endsection
